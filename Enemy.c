@@ -57,11 +57,19 @@ uint32_t game_speed = 4000000;
 const uint32_t game_speed_min = 2400000;
 const uint32_t game_speed_step = 10000;
 
-// number of steps taken 
-uint32_t game_score = 0;
+// light up a specific LED
+void EnemyControlLEDDirect(uint16_t row, uint16_t col, uint16_t value){
+	
+	// if 1 turn on, if 0 turn off
+	if(value == 1)
+		GPIOA->PCOR = (1u << enemy_screen_definition[row][col]);
+	else
+		GPIOA->PSOR = (1u << enemy_screen_definition[row][col]);
+}
 
-
-void EnemyClearScreen(){
+// clear the enemy screen
+// does not turn off leds unless EnemyAnimate is ran! 
+void EnemyClearScreen(void){
 		// clear current enemy screen
 	for(int i = 0; i < 3; i++){
 		for(int b = 0;b < 7; b++){
@@ -78,9 +86,6 @@ void EnemyInit(uint32_t seed){
 	
 	// clear enemy screen
 	EnemyClearScreen();
-	
-	// clear the game score
-	game_score = 0;
 	
 	// game_speed reset
 	game_speed = game_speed_const;
