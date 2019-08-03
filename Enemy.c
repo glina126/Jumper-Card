@@ -61,18 +61,23 @@ const uint32_t game_speed_step = 10000;
 uint32_t game_score = 0;
 
 
+void EnemyClearScreen(){
+		// clear current enemy screen
+	for(int i = 0; i < 3; i++){
+		for(int b = 0;b < 7; b++){
+			current_enemy_screen[i][b] = 0;
+		}
+	}
+}
+
 // initialize or re-initialize 
 void EnemyInit(uint32_t seed){
 	
 	// pass in the seed
 	srand(seed);
 	
-	// clear current enemy screen
-	for(int i = 0; i < 3; i++){
-		for(int b = 0;b < 7; b++){
-			current_enemy_screen[i][b] = 0;
-		}
-	}
+	// clear enemy screen
+	EnemyClearScreen();
 	
 	// clear the game score
 	game_score = 0;

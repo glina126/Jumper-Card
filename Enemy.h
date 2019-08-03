@@ -12,4 +12,7 @@
 // reinitializes the seed for rand()
 void EnemyInit(uint32_t);
 
+// clear the enemy screen
+void EnemyClearScreen(); 
+
 #endif
