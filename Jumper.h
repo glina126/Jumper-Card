@@ -8,5 +8,8 @@
 // position of the jumper					
 extern uint16_t jumper_pos;
 
+// jumper function exposed for testing
+void 	JumperSetEnergy(uint16_t);
+	
 
 #endif
