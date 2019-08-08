@@ -162,6 +162,14 @@ void EnemySpeedAdjust(void){
 void PIT_CH1_IRQHandler(void){
 	
 		// check if jumper hit an enemy
+/*
+	if(current_enemy_screen[2][3] == 1)
+		// run the jumper! 
+		JumperSetEnergy(4);
+	else if(current_enemy_screen[2][2] == 1)
+		// run the jumper! 
+		JumperSetEnergy(4);
+*/
 	for(int i = 0; i < 3; i++){
 		
 		// check if the enemy screen is a 1
