@@ -25,9 +25,9 @@
 #define LED18 7 // PTA6
 
 
+extern int leds_score[15]; 
 extern int leds [18]; 
 extern uint16_t enemy_screen_definition[3][5];	
 extern uint16_t jumper_screen_definition[3];
-
 
 #endif
