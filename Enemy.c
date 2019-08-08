@@ -161,7 +161,12 @@ void EnemySpeedAdjust(void){
 // and checking if jumper has been hit
 void PIT_CH1_IRQHandler(void){
 	
-		// check if jumper hit an enemy
+
+	
+	// animate the screen
+	EnemyAnimate();
+
+	
 /*
 	if(current_enemy_screen[2][3] == 1)
 		// run the jumper! 
@@ -170,14 +175,15 @@ void PIT_CH1_IRQHandler(void){
 		// run the jumper! 
 		JumperSetEnergy(4);
 */
+	
+	
+	// check if jumper hit an enemy
 	for(int i = 0; i < 3; i++){
 		
 		// check if the enemy screen is a 1
 		if(current_enemy_screen[i][0] == 1){
 			if(jumper_pos == 2 - i){
-				// jumper hit! do something
-				__nop();
-				
+				// jumper hit! 	
 				// end the game
 				GameStop();
 				
@@ -193,10 +199,6 @@ void PIT_CH1_IRQHandler(void){
 		}
 			
 	}
-	
-	// animate the screen
-	EnemyAnimate();
-	
 	
 	// generate a new enemy if delay allows
 	if( delay_tick >= delay){
@@ -217,8 +219,8 @@ void PIT_CH1_IRQHandler(void){
 		delay_tick++;
 
 	// make the game faster
-	if(game_speed > game_speed_min)
-		game_speed -= game_speed_step;
+	EnemySpeedAdjust();
+
 	
 		// reset the frequency of the PIT timer with new game speed
 	PIT->CHANNEL[1].LDVAL = game_speed;
