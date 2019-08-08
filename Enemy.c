@@ -52,10 +52,10 @@ uint16_t delay = 3;
 uint16_t delay_tick = 0;
 
 // speed of the game 
-const uint32_t game_speed_const = 4000000;
-uint32_t game_speed = 4000000; 
-const uint32_t game_speed_min = 2400000;
-const uint32_t game_speed_step = 10000;
+const uint32_t game_speed_const = 4500000; // 4500000
+uint32_t game_speed = 3500000; 
+const uint32_t game_speed_min = 2750000; // 2750000 = 114ms || 3500000 = 146ms
+const uint32_t game_speed_step = 5000;
 
 // light up a specific LED
 void EnemyControlLEDDirect(uint16_t row, uint16_t col, uint16_t value){
