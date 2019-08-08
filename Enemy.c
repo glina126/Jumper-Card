@@ -142,6 +142,18 @@ void GenerateEnemy(){
 	
 }
 
+// adjust the enemy speed as game progresses
+void EnemySpeedAdjust(void){
+	
+	// adjust the game speed at different rates through out
+	if(game_speed > (game_speed_min + 300000)){
+		game_speed -= game_speed_step;
+	}
+	else if(game_speed > game_speed_min){
+		game_speed -= game_speed_step/5;
+	}
+	
+}
 
 // PIT 1 (PWM) interrupt
 // main loop for enemy
