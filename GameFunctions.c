@@ -6,6 +6,15 @@ bool game_started = false;
 // seed for the rand()
 int seed = 0;
 
+// game score
+uint32_t game_score = 0;
+
+// ++ game score 
+void GameUpScore(void){
+	
+	game_score ++; 
+	
+}
 // start the game
 void GameStart(void){
 	
