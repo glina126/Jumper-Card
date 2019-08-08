@@ -46,26 +46,3 @@ void PIT_CH0_IRQHandler(void){
 	NVIC_ClearPendingIRQ(PIT_CH0_IRQn); // clear ARM irq
 	
 }
-
-
-// KBI interrupt on falling edge. button press 
-// PIT 0 interrupt - jumper animation
-void KBI0_IRQHandler(void){ 
-	
-	// if game is not started, start the game and exit
-	if(!game_started){
-		GameStart();
-		return;
-	}
-	
-	// run the jumper! 
-	JumperSetEnergy(4);
-	
-	// clear the KBI interrupt flag
-	KBI0->SC |= (1u << 2);
-	
-	// clear ARM IRQ
-	NVIC_ClearPendingIRQ(KBI0_IRQn);
-	
-	
-}
