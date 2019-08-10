@@ -166,13 +166,11 @@ void EnemySpeedAdjust(void){
 // and checking if jumper has been hit
 void PIT_CH1_IRQHandler(void){
 	
-
-	
 	// animate the screen
 	EnemyAnimate();
 
 	
-/*
+/* uncomment if you want the jumper to be automated
 	if(current_enemy_screen[2][3] == 1)
 		// run the jumper! 
 		JumperSetEnergy(4);

@@ -1,4 +1,3 @@
-// needed for proper compile.. blah.
 #include "LEDS.h"
 
 // assign values 

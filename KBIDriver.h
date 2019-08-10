@@ -1,5 +1,5 @@
-#ifndef KBI_DRIVER_H
-#define KBI_DRIVER_H
+#ifndef KBI_H
+#define KBI_H
 
 #include "MKE04Z4.h" 
 #include "typedef.h" // custom bool and etc. 

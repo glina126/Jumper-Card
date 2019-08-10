@@ -10,9 +10,8 @@
 															
 int main (void){
 	
-	
 		// --- SYSTICK ---
-	SysTick_Config(SystemCoreClock /6);  // 
+	SysTick_Config(SystemCoreClock /6);
 	
 	
 	// pin 13 is pulled up to batt by 10k resistor
@@ -48,17 +47,10 @@ int main (void){
 	PIT_Init();
 	
 
-	
-	// never quit 
+	// rest of the program is executed based on interrupts
+	// either from button press or timers
+	// never quit 	
 	while(1)
 		__nop();
 	
-	
 }
-
-
-
-
-
-
-

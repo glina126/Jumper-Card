@@ -1,9 +1,15 @@
 #include "GameFunctions.h"
 
-// game started var
+// game started bool
 bool game_started = false;
+
+// show score bool
 bool game_show_score = false;
+
+// score position for score display loop
 uint16_t game_score_pos = 0;
+
+// animate score init bool
 bool game_init_animate_score = false;
 
 // seed for the rand()
@@ -34,9 +40,7 @@ void GameCalculateScore(void){
 }
 
 void GameIntroRandomSequence(void){
-	
-
-	
+		
 	// generate a random number 
 	int random = rand();
 	
@@ -113,15 +117,10 @@ void GameStop(void){
 
 // pre-game/post-game loop 
 void SysTick_Handler(void)  {   
-		
-	// check up on the system and perform moundane tasks 
-	
+
 	// up our seed to make it as random as possible
 	seed++;
 
-		// game
-	// GameStart();
-	
 	// determine the state of the program and follow through
 	switch(game_program_state){
 		
@@ -150,8 +149,7 @@ void SysTick_Handler(void)  {
 		GameAnimateScore();
 		game_show_score = false;
 	}
-	
-	
+		
 }
 
 // KBI interrupt on falling edge. button press 
@@ -162,7 +160,6 @@ void KBI0_IRQHandler(void){
     if(!game_started){
 			// up the game_program_state 
 			game_program_state++;
-			
 
 			// check to make sure we are not overflowing
 			if(game_program_state > 2)
@@ -198,11 +195,5 @@ void KBI0_IRQHandler(void){
     
     // clear ARM IRQ
     NVIC_ClearPendingIRQ(KBI0_IRQn);
-    
-    
+        
 }
-
-
-
-
-
