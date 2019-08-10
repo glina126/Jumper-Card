@@ -34,6 +34,29 @@ void GameAnimateScore(void){
 	// light up LEDS
 	for(int i = 0; i < game_score; i++)
 		GPIOA->PCOR = (1u << leds_score[i]);
+
+
+// display the score on the enemy screen
+void GameAnimateScore(void){
+	
+	// check if the animation of the score has started
+	if(game_init_animate_score == false){
+		// clear the jumper and enemy screen
+		for(int i = 0; i < 18; i++){
+			GPIOA->PSOR = (1u << leds[i]);
+		}
+		game_init_animate_score = true;
+	}
+	
+	// check if we should still do this
+	if(game_score_pos <= game_score){
+		
+		// light up the specific position
+		GPIOA->PCOR = (1u << leds_score[game_score_pos]);
+		
+		// up the score pos
+		game_score_pos++;
+	}
 	
 }
 
