@@ -95,6 +95,19 @@ void EnemyInit(uint32_t seed){
 }
 
 
+void EnemyScreenRedraw(void){
+		// turn on/off leds 
+	for(int i = 0; i < 3; i++){
+		for(int b = 0; b < 5; b++){
+			// turn off the led if 0 turn on if 1
+			if(current_enemy_screen[i][b] == 0)
+				GPIOA->PSOR = (1u << enemy_screen_definition[i][b]);
+			else 
+				GPIOA->PCOR = (1u << enemy_screen_definition[i][b]);
+		}
+	}
+}
+
 
 // animates and renders the pixels
 void EnemyAnimate(){
@@ -109,16 +122,8 @@ void EnemyAnimate(){
 	for(int i = 0; i < 3; i++)
 		current_enemy_screen[i][6] = 0;
 	
-	// turn on/off leds 
-	for(int i = 0; i < 3; i++){
-		for(int b = 0; b < 5; b++){
-			// turn off the led if 0 turn on if 1
-			if(current_enemy_screen[i][b] == 0)
-				GPIOA->PSOR = (1u << enemy_screen_definition[i][b]);
-			else 
-				GPIOA->PCOR = (1u << enemy_screen_definition[i][b]);
-		}
-	}
+	// redraw the screen
+	EnemyScreenRedraw();
 	
 }	
 
