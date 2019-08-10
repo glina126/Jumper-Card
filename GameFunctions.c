@@ -22,18 +22,16 @@ void GameUpScore(void){
 	
 }
 
-// display the score on the enemy screen
-void GameAnimateScore(void){
+// calculate the game score
+void GameCalculateScore(void){
 	
 	// normalize the game score -- we have 15 available leds			
-	game_score /= 50;
+	game_score /= 30;
 	
  	if(game_score > 14)
 		game_score = 14;
 	
-	// light up LEDS
-	for(int i = 0; i < game_score; i++)
-		GPIOA->PCOR = (1u << leds_score[i]);
+}
 
 
 // display the score on the enemy screen
