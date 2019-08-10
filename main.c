@@ -43,17 +43,11 @@ int main (void){
 	
 	// initialize the KBI module
 	KBIInit();
-	
-	// turn on the jumper
-	GPIOA->PCOR = (1u << jumper_screen_definition[0]);
-	
+		
 	// initialize PIT 
 	PIT_Init();
 	
-	// start timers
-	// PIT_StartTimers();
-	// GameStart();
-	
+
 	
 	// never quit 
 	while(1)
