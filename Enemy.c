@@ -53,7 +53,7 @@ uint16_t delay_tick = 0;
 
 // speed of the game 
 const uint32_t game_speed_const = 4500000; // 4500000
-uint32_t game_speed = 3500000; 
+uint32_t game_speed = 4500000; 
 const uint32_t game_speed_min = 2750000; // 2750000 = 114ms || 3500000 = 146ms
 const uint32_t game_speed_step = 5000;
 
@@ -131,7 +131,7 @@ void EnemyAnimate(){
 void GenerateEnemy(){
 	
 	// generate a random number
-	int num = rand(); // 0 to 32767 
+	int num = rand(); // 0 to 0x7FFFFFFF
 	num /= 306783378; 
 	
 	// just in case
