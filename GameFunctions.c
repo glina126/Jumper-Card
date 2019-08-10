@@ -82,17 +82,16 @@ void SysTick_Handler(void)  {
 		
 		case 0:
 			// intro 
+			GameIntroRandomSequence();
 			break;
 		case 1:
-
+			// gameplay
 			break;
 		case 2:
 			// flash
+			game_show_score = true;
 			break;
-		case 3:
-			// score
 
-			break;
 		default:
 			break;
 		
