@@ -61,10 +61,10 @@ void GameStop(void){
  	// stop timers
 	PIT_StopTimers();
 	
-	// animate score onto screen
-	GameAnimateScore();
-	
+	// normalize the score of the game
+	GameCalculateScore(); 
 }
+
 
 // pre-game/post-game loop 
 void SysTick_Handler(void)  {   
