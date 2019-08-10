@@ -3,7 +3,8 @@
 // game started var
 bool game_started = false;
 bool game_show_score = false;
-bool game_show_init = true;
+uint16_t game_score_pos = 0;
+bool game_init_animate_score = false;
 
 // seed for the rand()
 int seed = 0;
