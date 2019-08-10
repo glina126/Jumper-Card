@@ -6,6 +6,7 @@
 #include "LEDS.h" // leds mapping
 #include "KBIDriver.h" // KBI driver
 #include "GameFunctions.h"
+#include "ADC.h" // ADC driver
 															
 int main (void){
 	
@@ -13,6 +14,20 @@ int main (void){
 		// --- SYSTICK ---
 	SysTick_Config(SystemCoreClock /6);  // 
 	
+	
+	// pin 13 is pulled up to batt by 10k resistor
+	// this should vary in voltage as battery ages, 
+	// as battery is drained and as load varies
+	// pin 13 default is ADC0_SE7 - use is as random (init) seed
+	// initialize the adc 
+	ADCInit();
+	
+	// read the result from ADC_R	
+	// use the result as a random seed for rand() 
+	srand(ADCRead());
+	
+	// disable the adc for power saving
+	ADCDisable();
 	
 	// set up the GPIO 
 	for(int i = 0; i < 18; i++){
