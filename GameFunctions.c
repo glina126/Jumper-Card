@@ -111,8 +111,34 @@ void KBI0_IRQHandler(void){
     
     // if game is not started, start the game and exit
     if(!game_started){
-        GameStart();
-        return;
+			// up the game_program_state 
+			game_program_state++;
+			
+
+			// check to make sure we are not overflowing
+			if(game_program_state > 2)
+				game_program_state = 1;
+			
+			// start the game if we are in state of 1
+			if(game_program_state == 1){
+				GameStart();
+				// kick start the jumper for the effect
+				JumperSetEnergy(4);
+			}
+				
+			// debounce delay
+			for(int i = 0; i < 1000000; i++)
+				__nop();
+			
+			
+			// clear the KBI interrupt flag
+			KBI0->SC |= (1u << 2);
+			
+			// clear ARM IRQ
+			NVIC_ClearPendingIRQ(KBI0_IRQn);
+			
+			// end the function here
+			return;
     }
     
     // run the jumper! 
