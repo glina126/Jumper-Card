@@ -12,9 +12,6 @@
 // reinitializes the seed for rand()
 void EnemyInit(uint32_t);
 
-// clear the enemy screen
-void EnemyClearScreen(void); 
-
 // forces a screen refresh based on current_enemy_screen definition
 // this function is ran automatically by timers in game mode
 // current_enemy_screen needs to be modified before running 
