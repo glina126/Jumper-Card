@@ -33,6 +33,28 @@ void GameCalculateScore(void){
 	
 }
 
+void GameIntroRandomSequence(void){
+	
+
+	
+	// generate a random number 
+	int random = rand();
+	
+	// normalize the random number
+	random /= 143165576; // 0 to 17
+	
+	// make sure its not above 17 and not below 0
+	if(random > 14)
+		random = 14;
+	else if(random < 0)
+		random = 0;
+	
+	// toggle a led! 
+	GPIOA->PTOR = (1u << leds_score[random]);
+	
+}
+
+
 
 // display the score on the enemy screen
 void GameAnimateScore(void){
