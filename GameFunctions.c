@@ -90,6 +90,8 @@ void GameStart(void){
 	// clear all variables except the seed
 	EnemyInit(seed);
 	game_score = 0;
+	game_score_pos = 0;
+	game_init_animate_score = false;
 	
 	// start timers
 	PIT_StartTimers();
@@ -144,6 +146,11 @@ void SysTick_Handler(void)  {
 	if(game_started == true)
 		game_score ++; 
 
+	if(game_show_score == true){
+		GameAnimateScore();
+		game_show_score = false;
+	}
+	
 	
 }
 
